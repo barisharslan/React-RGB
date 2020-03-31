@@ -11,6 +11,7 @@ const Tiles = props => {
     return props.colors.map(( color, index ) => {
         return <Tile 
             color={color}
+            key={color.join('')}
         />
     }) 
 }

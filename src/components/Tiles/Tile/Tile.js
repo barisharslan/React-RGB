@@ -8,9 +8,14 @@ import React from 'react';
 import './Tile.css'
 
 const Tile = ( props ) => {
+    const style = {
+        backgroundColor: `rgb(${props.color.join(', ')})`
+    }
+
     return (
-        <div className="Tile">
-            {props.color}
+        <div className="Tile"
+            style={style}>
+            ( {props.color.join(', ')} )
         </div>
     )
 }
