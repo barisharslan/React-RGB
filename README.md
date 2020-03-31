@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a redo of an earlier project I did as part of Colt Steele's Web Dev class on Udemy. The game is simple, it gets a random RGB color, then generates 5 other random colors. It then shuffles them around and displays each as a tile on the screen. The aim of the game is to guess the correct color based on the given code. I added a difficulty feature as a challenge to myself, and it worked out pretty well. In short, the higher the difficulty, the more similar the colors start becoming, AKA the closer the generated RGB codes are to the solution color. 
 
-## Available Scripts
+##Components
 
-In the project directory, you can run:
+#App
++ The main container component for the entire app. 
++ Will most likely be the sole component that will have any state
++ Keeps track of the solution color
++ Should handle logic of creating the other colors and shuffling the array
++ Passes colors to Tiles component
++ Will also need to keep track of which tiles have been clicked. 
++ Later it will most likely keep track of the difficulty as well.
 
-### `yarn start`
+#Header
++ Will simply display the title of the app, and the solution color
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#Tiles
++ The Tiles component is the main body of the app, where the 6 individual Tile components will be placed. 
++ This component shouldn't do anything other than display the given colors 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#Tile 
++ The individual squares of color. 
++ Currently they display the RGB code they are passed as text
++ Later will actually display that code 
++ Should listen for clicks which will trigger a clickHandler in App
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+Log
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+3/30/2019
++ Set up project with create-react-app
++ Created Header, Tiles, and Tile components 
