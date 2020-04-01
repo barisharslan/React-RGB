@@ -19,7 +19,7 @@ class App extends Component {
       [10, 50, 10],
       [10, 10, 50]
     ],
-    diff: 1
+    diff: 4
 
   }
 
@@ -32,17 +32,25 @@ class App extends Component {
         if (max > 255) { max = 255; }
         return Math.floor(Math.random() * (max - min) + min);
     }
-
+    const getOffsetFromDiff = diff => {
+      if ( diff === 0 ) { return 150; }
+      if ( diff === 1 ) { return 100; }
+      if ( diff === 2 ) { return 50; }
+      if ( diff === 3 ) { return 30; }
+      if ( diff === 4 ) { return 15; }
+    }
     const getSimilarColor = ( color, diff ) => {
       if (diff === 0) { return [getNum(), getNum(), getNum()]; }
-      const offset = 150; // this will be generated using the diff later
+
+      const offset = getOffsetFromDiff( diff ); // this will be generated using the diff later
+      console.log(offset);
       return [getNumWithOffset( color[0], offset ), getNumWithOffset( color[1], offset ), getNumWithOffset( color[2], offset )]
     }
 
     let color = [getNum(), getNum(), getNum()]; // the solution color
     let colors = [color];
     for (let i = 0; i < 5; i++){
-      colors.push(getSimilarColor(color, 1));
+      colors.push(getSimilarColor(color, this.state.diff));
     }
 
 
@@ -60,6 +68,7 @@ class App extends Component {
       <div className="App">
         <Header 
           color={this.state.colors[0]}
+          diff={this.state.diff}
         />
         <Tiles 
           colors={this.state.colors}
