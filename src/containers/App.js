@@ -8,8 +8,6 @@ class App extends Component {
   //   super( props );
   // }
 
-  /* For now state only has to worry about colors. Later on, difficulty
-     will probably be tracked as well */
   state = {
     colors: [
       [100, 100, 100], // first element of colors is the solution color
@@ -19,12 +17,28 @@ class App extends Component {
       [10, 50, 10],
       [10, 10, 50]
     ],
-    diff: 4
+    diff: 1,
+    winningColor: [100, 100, 100]
 
   }
 
-  getNewColors = ( diff ) => {
+  tileClickedHandler = ( tileIndex ) => {
+    // this logic can probably be improved
+    if ( this.state.colors[tileIndex] === this.state.winningColor) {
+      alert("VICTORY!");
+      setTimeout(() => {
+        this.getNewColors();
+    }, 1000);
+    } else {
+      const colors = [...this.state.colors];
+      colors.splice(tileIndex, 1);
+      this.setState({colors: colors});  
+    }
+  }
+
+  getNewColors = () => {
     const getNum = () => Math.floor(Math.random() * 256);
+
     const getNumWithOffset = ( num, offset ) => {
         let min = num - offset;
         if (min < 0) { min = 0; }
@@ -32,6 +46,7 @@ class App extends Component {
         if (max > 255) { max = 255; }
         return Math.floor(Math.random() * (max - min) + min);
     }
+
     const getOffsetFromDiff = diff => {
       if ( diff === 0 ) { return 150; }
       if ( diff === 1 ) { return 100; }
@@ -39,20 +54,19 @@ class App extends Component {
       if ( diff === 3 ) { return 30; }
       if ( diff === 4 ) { return 15; }
     }
+
     const getSimilarColor = ( color, diff ) => {
       if (diff === 0) { return [getNum(), getNum(), getNum()]; }
-
       const offset = getOffsetFromDiff( diff ); // this will be generated using the diff later
-      console.log(offset);
       return [getNumWithOffset( color[0], offset ), getNumWithOffset( color[1], offset ), getNumWithOffset( color[2], offset )]
     }
 
-    let color = [getNum(), getNum(), getNum()]; // the solution color
+    const color = [getNum(), getNum(), getNum()]; // the solution color
+    this.setState({winningColor: color})
     let colors = [color];
     for (let i = 0; i < 5; i++){
       colors.push(getSimilarColor(color, this.state.diff));
     }
-
 
     this.setState({
       colors: colors
@@ -67,11 +81,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header 
-          color={this.state.colors[0]}
+          color={this.state.winningColor}
           diff={this.state.diff}
         />
         <Tiles 
           colors={this.state.colors}
+          clicked={this.tileClickedHandler}
         />
       </div>
     );

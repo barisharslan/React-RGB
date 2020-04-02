@@ -33,3 +33,11 @@ This is a redo of an earlier project I did as part of Colt Steele's Web Dev clas
 ## 3/30/2019
 + Set up project with create-react-app
 + Created Header, Tiles, and Tile components 
+
+## 3/31/2019
++ Created logic for determining offset
+
+## 4/1/2019
++ Tried to optimize getNewColors() but failed...
++ Implemented (copied from stackoverflow) shuffle logic in Tiles
++ 

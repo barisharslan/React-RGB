@@ -1,7 +1,7 @@
 .Tile {
     display: inline-block;
     margin: 5px 5px;
-    padding: 50px 20px;
+    padding: 100px 20px;
     width: 25%;
     border: 2px solid black;
     box-shadow: 0 3px 4px rgb(0, 0, 0);
