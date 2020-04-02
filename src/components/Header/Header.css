@@ -4,3 +4,12 @@
     /* margin: 60px auto; */
     background-color: #f4eeff;
 }
+
+.controlBar {
+    background-color: slategray;
+}
+
+.controlBar button {
+    display: inline-block;
+    margin: 10px 150px;
+}

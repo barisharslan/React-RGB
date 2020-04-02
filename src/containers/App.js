@@ -22,18 +22,25 @@ class App extends Component {
 
   }
 
-  tileClickedHandler = ( tileIndex ) => {
+  tileClickedHandler = tileIndex => {
     // this logic can probably be improved
     if ( this.state.colors[tileIndex] === this.state.winningColor) {
       alert("VICTORY!");
       setTimeout(() => {
         this.getNewColors();
-    }, 1000);
+    }, 500);
     } else {
       const colors = [...this.state.colors];
       colors.splice(tileIndex, 1);
       this.setState({colors: colors});  
     }
+  }
+
+  diffChangedHandler = () => {
+    this.setState(( prevState, props ) => {
+      return {diff: this.state.diff + 1}
+    });
+    this.getNewColors();
   }
 
   getNewColors = () => {
@@ -83,6 +90,8 @@ class App extends Component {
         <Header 
           color={this.state.winningColor}
           diff={this.state.diff}
+          diffChangedHandler={this.diffChangedHandler}
+          newGameHandler={this.getNewColors}
         />
         <Tiles 
           colors={this.state.colors}

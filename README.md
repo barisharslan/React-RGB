@@ -40,4 +40,6 @@ This is a redo of an earlier project I did as part of Colt Steele's Web Dev clas
 ## 4/1/2019
 + Tried to optimize getNewColors() but failed...
 + Implemented (copied from stackoverflow) shuffle logic in Tiles
-+ 
++ Implemented tileClickedHandler
++ Quick refactor of Header.js
++ Implemented victory screen and new round logic
