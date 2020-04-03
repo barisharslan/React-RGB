@@ -12,11 +12,12 @@ const Tile = ( props ) => {
         backgroundColor: `rgb(${props.color.join(', ')})`
     }
 
+    
+
     return (
         <div className="Tile"
             style={style}
             onClick={props.click}>
-            {/* ( {props.color.join(', ')} ) */}
         </div>
     )
 }

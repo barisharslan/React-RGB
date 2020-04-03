@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import Tile from './Tile/Tile'
+import Tile from './Tile/Tile';
 
 const Tiles = props => {
     // source - https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array

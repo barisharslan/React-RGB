@@ -38,6 +38,7 @@ class App extends Component {
 
   diffChangedHandler = () => {
     this.setState(( prevState, props ) => {
+      if ( this.state.diff === 4 ) { return {diff: 0} }
       return {diff: this.state.diff + 1}
     });
     this.getNewColors();
@@ -45,7 +46,6 @@ class App extends Component {
 
   getNewColors = () => {
     const getNum = () => Math.floor(Math.random() * 256);
-
     const getNumWithOffset = ( num, offset ) => {
         let min = num - offset;
         if (min < 0) { min = 0; }
@@ -53,7 +53,6 @@ class App extends Component {
         if (max > 255) { max = 255; }
         return Math.floor(Math.random() * (max - min) + min);
     }
-
     const getOffsetFromDiff = diff => {
       if ( diff === 0 ) { return 150; }
       if ( diff === 1 ) { return 100; }
@@ -61,7 +60,6 @@ class App extends Component {
       if ( diff === 3 ) { return 30; }
       if ( diff === 4 ) { return 15; }
     }
-
     const getSimilarColor = ( color, diff ) => {
       if (diff === 0) { return [getNum(), getNum(), getNum()]; }
       const offset = getOffsetFromDiff( diff ); // this will be generated using the diff later
@@ -81,6 +79,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log('app.js componentDidMount')
     this.getNewColors( this.state.diff );
   }
 
